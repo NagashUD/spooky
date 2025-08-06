@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spooky Creations by [Her Name]</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+  margin: 0;
+  font-family: 'Creepster', cursive;
+  background-color: #1a0f1f;
+  color: #f5f5f5;
+
+      background-image: url('images/bg01.png'); /* ← ton image de fond */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.8); /* assombrit le fond */
+  z-index: -1;
+}
+
+header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(to bottom, #1a0f1f, #0a0a0a);
+
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+  
+}
+
+.grid img {
+  width: 100px;
+  height: 150px;
+  border: 3px solid #2f1a2f;
+  border-radius: 8px;
+  background-color: #00000066;
+  transition: transform 0.2s;
+}
+
+.grid img:hover {
+  transform: scale(1.05);
+}
+
+section {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+  
+}
+
+.btn {
+  display: inline-block;
+  background-color: #572a78;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.btn:hover {
+  background-color: #743f9d;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  background-color: #0a0a0a;
+}
+/* Popup overlay */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border: 4px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #ff00ff44;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+</style>
+<body>
+  <header>
+    <h1>Spooky Creations by "SPOOKY"</h1>
+    <p>Handcrafted with love, clay, and a little bit of darkness… 🕷️</p>
+  </header>
+
+  <section id="gallery">
+    <h2>🖼️ Gallery</h2>
+<div class="grid">
+  <img src="images/01.jpg" data-full="images/01.jpg" alt="Cauldron painting" />
+  <img src="images/02.jpg" data-full="images/02.jpg" alt="Witch flying" />
+  <img src="images/03.jpg" data-full="images/03.jpg" alt="Mushroom fountain" />
+  <img src="images/04.jpg" data-full="images/04.jpg" alt="Cute blue mushroom" />
+  <img src="images/05.jpg" data-full="images/05.jpg" alt="Mushroom fountain" />
+  <img src="images/06.jpg" data-full="images/06.jpg" alt="Cute blue mushroom" />
+   <img src="images/07.jpg" data-full="images/07.jpg" alt="Mushroom fountain" />
+  <img src="images/08.jpg" data-full="images/08.jpg" alt="Cute blue mushroom" />
+  <img src="images/09.jpg" data-full="images/09.jpg" alt="Mushroom fountain" />
+  <img src="images/010.jpg" data-full="images/010.jpg" alt="Cute blue mushroom" />
+</div>
+  </section>
+
+  <section id="about">
+    <h2>🕯️ About</h2>
+    <p>
+      A spooky soul who sculpts and paints from the heart. Each piece is unique, handmade, and filled with magical energy. If it glows in the dark or gives you chills, it’s probably hers. 🌙
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>📬 Contact</h2>
+    <p>Want a custom piece or just to share some love?</p>
+    <a href="mailto:her@email.com" class="btn">Send a Message</a>
+  </section>
+
+  <footer>
+    <p>©_2025 — Web design by Vee & Lina 🖤</p>
+  </footer>
+  <div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt="Enlarged artwork" />
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  document.querySelectorAll('.grid img').forEach(img => {
+    img.addEventListener('click', () => {
+      const fullSrc = img.getAttribute('data-full');
+      lightboxImg.src = fullSrc;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+</script>
+</body>
+</html>
