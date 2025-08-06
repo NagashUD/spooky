@@ -113,6 +113,11 @@ footer {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
+#toggle-icon {
+  font-size: 1.2rem;
+  color: #aaa;
+  margin-left: 0.5rem;
+}
 </style>
 <body>
   <header>
@@ -120,9 +125,11 @@ footer {
     <p>Handcrafted with love, clay, and a little bit of darkness… 🕷️</p>
   </header>
 
-  <section id="gallery">
-    <h2>🖼️ Gallery</h2>
-<div class="grid">
+<section id="gallery">
+  <h2 onclick="toggleGallery()" style="cursor: pointer;">
+    🖼️ Gallery <span id="toggle-icon">[ + ]</span>
+  </h2>
+  <div class="grid" id="gallery-content" style="display: none;">
   <img src="images/01.jpg" data-full="images/01.jpg" alt="Cauldron painting" />
   <img src="images/02.jpg" data-full="images/02.jpg" alt="Witch flying" />
   <img src="images/03.jpg" data-full="images/03.jpg" alt="Mushroom fountain" />
@@ -171,6 +178,15 @@ footer {
   lightbox.addEventListener('click', () => {
     lightbox.style.display = 'none';
   });
+
+  function toggleGallery() {
+  const gallery = document.getElementById('gallery-content');
+  const icon = document.getElementById('toggle-icon');
+  const isVisible = gallery.style.display === 'block';
+
+  gallery.style.display = isVisible ? 'none' : 'block';
+  icon.textContent = isVisible ? '[ + ]' : '[ – ]';
+};
 </script>
 </body>
 </html>
